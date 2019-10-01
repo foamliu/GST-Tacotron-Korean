@@ -1,7 +1,7 @@
 import os
 import pickle
 
-from config import train_folder, test_folder, vocab_file
+from config import train_folder, test_folder, vocab_file, data_file
 
 
 def get_data(folder):
@@ -18,6 +18,8 @@ def get_data(folder):
             audiopath = tokens[0]
             audiopath = os.path.join(folder_path, '{}.flac'.format(audiopath))
             text = tokens[1]
+            for token in text:
+                build_vocab(token)
             samples.append('{}|{}\n'.format(audiopath, text))
             print(audiopath)
             print(text)
@@ -60,15 +62,18 @@ if __name__ == "__main__":
     idx2char = {}
 
     data = dict()
+    data['train'] = get_data(train_folder)
+    data['test'] = get_data(test_folder)
+    with open(data_file, 'wb') as file:
+        pickle.dump(data, file)
+
+    print('num_train: ' + str(len(data['train'])))
+    print('num_test: ' + str(len(data['test'])))
+
+    data = dict()
     data['char2idx'] = char2idx
     data['idx2char'] = idx2char
-
     with open(vocab_file, 'wb') as file:
         pickle.dump(data, file)
 
-    data = dict()
-    data['train'] = get_data(train_folder)
-    data['test'] = get_data(test_folder)
-
     print('vocab_size: ' + str(len(data['char2idx'])))
-    print('char2idx: ' + str(char2idx))
