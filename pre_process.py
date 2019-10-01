@@ -20,9 +20,8 @@ def get_data(folder):
             text = ''.join(tokens[1:])
             for token in text:
                 build_vocab(token)
-            samples.append('{}|{}\n'.format(audiopath, text))
-            print(audiopath)
-            print(text)
+            text = [char2idx[ch] for ch in text]
+            samples.append({'audiopath': audiopath, 'text': text})
 
     return samples
 
