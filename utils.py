@@ -8,7 +8,7 @@ import numpy as np
 import pinyin
 import torch
 
-from config import sampling_rate, char_to_idx, idx_to_char, ref_wav
+from config import sampling_rate, char2idx, idx2char, ref_wav
 from models.layers import STFT
 
 
@@ -164,12 +164,12 @@ def to_gpu(x):
 
 
 def text_to_sequence(text):
-    result = [char_to_idx[ch] for ch in text]
+    result = [char2idx[ch] for ch in text]
     return result
 
 
 def sequence_to_text(seq):
-    result = [idx_to_char[idx] for idx in seq]
+    result = [idx2char[idx] for idx in seq]
     return result
 
 
