@@ -4,7 +4,7 @@ A PyTorch implementation of Tacotron2, described in [Natural TTS Synthesis By Co
 
 ## Dataset
 
-[Aishell Dataset](http://www.openslr.org/33/), containing 400 speakers and over 170 hours of Mandarin speech data.
+[Zeroth-Korean](http://www.openslr.org/40/) contains transcriebed audio data for Korean. There are 51.6 hours transcribed Korean audio for training data (22,263 utterances, 105 people, 3000 sentences) and 1.2 hours transcribed Korean audio for testing data (457 utterances, 10 people)..
 
 ## Dependency
 
@@ -13,35 +13,15 @@ A PyTorch implementation of Tacotron2, described in [Natural TTS Synthesis By Co
 
 ## Usage
 ### Data Pre-processing
-Extract data_aishell.tgz:
+Extract zeroth_korean.tar.gz:
 ```bash
 $ python extract.py
 ```
 
-Extract wav files into train/dev/test folders:
-```bash
-$ cd data/data_aishell/wav
-$ find . -name '*.tar.gz' -execdir tar -xzvf '{}' \;
-```
-
-Scan transcript data, generate features:
+Pro-process training & test data:
 ```bash
 $ python pre_process.py
 ```
-
-Now the folder structure under data folder is sth. like:
-<pre>
-data/
-    data_aishell.tgz
-    data_aishell/
-        transcript/
-            aishell_transcript_v0.8.txt
-        wav/
-            train/
-            dev/
-            test/
-    aishell.pickle
-</pre>
 
 ### Train
 ```bash
@@ -54,8 +34,8 @@ $ tensorboard --logdir runs
 ```
 
 ### Demo
-Generate mel-spectrogram for text "Waveglow is really awesome!"
+Generate mel-spectrogram for text "강판사는심문시간이길어질것으로보고오후한시육분부터한시간동안휴정을선언하기도했다"
 ```bash
 $ python demo.py
 ```
-![image](https://github.com/foamliu/Tacotron2-CN/raw/master/images/mel_spec.jpg)
+![image](https://github.com/foamliu/GST-Tacotron-Korean/raw/master/images/mel_spec.jpg)
