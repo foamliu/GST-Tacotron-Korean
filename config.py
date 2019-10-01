@@ -1,18 +1,23 @@
+import pickle
+
 import torch
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')  # sets device for model and PyTorch tensors
 
-num_train = 120098
-num_dev = 14326
-num_test = 7176
+num_train = 22263
+num_test = 457
+vocab_size = 1202
 vocab_file = 'data/vocab.pkl'
 
-vocab_size = 100
+with open(vocab_file, 'rb') as file:
+    data = pickle.load(file)
 
-unk_id = 0
+char2idx = data['char2idx']
+idx2char = data['idx2char']
 
 train_folder = 'data/train_data_01/003'
 test_folder = 'data/test_data_01/003'
+
 data_file = 'data/zeroth_korean.pkl'
 
 ################################
