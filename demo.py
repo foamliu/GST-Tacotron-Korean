@@ -21,7 +21,6 @@ if __name__ == '__main__':
     denoiser = Denoiser(waveglow)
 
     text = "必须树立公共交通优先发展的理念"
-    text = pinyin.get(text, format="numerical", delimiter=" ")
     print(text)
     sequence = np.array(text_to_sequence(text))[None, :]
     sequence = torch.autograd.Variable(torch.from_numpy(sequence)).cuda().long()

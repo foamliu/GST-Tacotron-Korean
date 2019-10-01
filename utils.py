@@ -3,6 +3,9 @@ import logging
 
 import cv2 as cv
 import librosa
+import matplotlib
+
+matplotlib.use('Agg')
 import matplotlib.pylab as plt
 import numpy as np
 import torch
