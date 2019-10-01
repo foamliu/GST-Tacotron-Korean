@@ -49,7 +49,7 @@ class TextMelLoader(torch.utils.data.Dataset):
         return melspec
 
     def get_text(self, text):
-        text = text_to_sequence(text)
+        # text = text_to_sequence(text)
         text_norm = torch.IntTensor(text)
         return text_norm
 
