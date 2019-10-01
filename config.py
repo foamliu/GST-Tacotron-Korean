@@ -5,16 +5,15 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')  # sets de
 num_train = 120098
 num_dev = 14326
 num_test = 7176
+vocab_file = 'data/vocab.pkl'
 
-vocab = 'abcdefghijklmnopqrstuvwxyz12345 '
-vocab_size = len(vocab)
-idx_to_char = {i: vocab[i] for i in range(0, len(vocab))}
-char_to_idx = {vocab[i]: i for i in range(0, len(vocab))}
+vocab_size = 100
 
 unk_id = 0
 
-thchs30_folder = 'data/data_thchs30'
-data_file = 'data/data_thchs30.pkl'
+train_folder = 'data/train_data_01/003'
+test_folder = 'data/test_data_01/003'
+data_file = 'data/zeroth_korean.pkl'
 
 ################################
 # Experiment Parameters        #
