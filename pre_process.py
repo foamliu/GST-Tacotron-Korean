@@ -18,6 +18,7 @@ def get_data(folder):
             audiopath = tokens[0]
             audiopath = os.path.join(folder_path, '{}.flac'.format(audiopath))
             text = ''.join(tokens[1:])
+            print(text)
             for token in text:
                 build_vocab(token)
             text = [char2idx[ch] for ch in text]
