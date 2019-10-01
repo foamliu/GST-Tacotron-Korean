@@ -217,7 +217,7 @@ class Denoiser(torch.nn.Module):
 
 def test(model, step_num, loss, get_mel):
     model.eval()
-    text = "특히 전 전 대통령은 내빈 소개 때 여전히 전두환 각하라고 불리기도 했다"
+    text = "강판사는심문시간이길어질것으로보고오후한시육분부터한시간동안휴정을선언하기도했다"
     sequence = np.array(text_to_sequence(text))[None, :]
     sequence = torch.autograd.Variable(torch.from_numpy(sequence)).cuda().long()
 
